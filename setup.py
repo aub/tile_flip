@@ -21,19 +21,19 @@ classifiers = [
         'Topic :: Scientific/Engineering :: GIS',
 ]
 
-setup(name='Seeder',
+setup(name='TileFlip',
       version = '0.0.1',
-      description = 'a web map seeding system',
+      description = 'a web map seeding and expiration system',
       long_description = readme,
       author = 'Aubrey Holland',
       author_email = 'aubrey@gmail.com',
       url = 'http://riotprojects.com/',
 			platforms = 'OS Independent',
-			require = ['TileCache'],
+			require = ['TileCache, mapnik'],
 			packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
       scripts = [],
       zip_safe = False,
-      test_suite = 'tests.seeder_test',
+      test_suite = 'tests',
       license = 'MIT',
       classifiers = classifiers
      )
