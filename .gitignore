@@ -1,0 +1,5 @@
+Seeder.egg-info
+build
+dist
+*.pyc
+tests/cache
