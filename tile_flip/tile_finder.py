@@ -49,5 +49,5 @@ class TileFinder:
 	def isTmsPathCached(self, layerName, x, y, z):
 		layer = self.service.layers[layerName]
 		tile = Tile(layer, x, y, z)
-		return self.service.cache.access(self.service.getKey(tile))
+		return self.service.cache.access(self.service.cache.getKey(tile))
 
