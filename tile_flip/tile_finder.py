@@ -45,7 +45,7 @@ class TileFinder:
 
 		return tiles
 
-  # Note that this only works with disk cacnes.
+	# Note that this only works with disk caches.
 	def isTmsPathCached(self, layerName, x, y, z):
 		layer = self.service.layers[layerName]
 		tile = Tile(layer, x, y, z)
