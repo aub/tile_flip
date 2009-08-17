@@ -5,11 +5,11 @@ from TileCache.Layer import Tile
 import pdb
 
 class TileFinder:
- def __init__(self, tileCacheConfigFile):
-	self.tileCacheConfigFile = tileCacheConfigFile
-	self.service = TileCache.Service.load(self.tileCacheConfigFile)
+	def __init__(self, tileCacheConfigFile):
+		self.tileCacheConfigFile = tileCacheConfigFile
+		self.service = TileCache.Service.load(self.tileCacheConfigFile)
 
- def findTiles(self, layerName, levels=None, bbox=None, tilePadding=0, block=None):
+	def findTiles(self, layerName, levels=None, bbox=None, tilePadding=0, block=None):
 		try:
 			tilePadding = int(tilePadding)
 		except:
@@ -45,10 +45,9 @@ class TileFinder:
 
 		return tiles
 
-	# Note that this only works with disk caches.
+	# Note that this only works with disk cacnes.
 	def isTmsPathCached(self, layerName, x, y, z):
 		layer = self.service.layers[layerName]
 		tile = Tile(layer, x, y, z)
 		return self.service.cache.access(self.service.getKey(tile))
-
 
