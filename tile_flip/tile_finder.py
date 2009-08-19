@@ -15,7 +15,8 @@ class TileFinder:
 		except:
 			raise Exception('Your tilePadding parameter is %s, but should be an integer' % tilePadding)
 
-		tiles = []
+		if not block:
+			tiles = []
 
 		layer = self.service.layers[layerName] 
 		if not levels: levels = (0, len(layer.resolutions))
@@ -37,11 +38,13 @@ class TileFinder:
 
 			for y in range(startY, endY, stepY):
 				for x in range(startX, endX, stepX):
-					tiles.append(Tile(layer, x, y, z))
+					if block:
+						block(tile)
+					else:
+						tiles.append(Tile(layer, x, y, z))
 
 		if block:
-			for tile in tiles:
-				block(tile)
+			return True
 
 		return tiles
 
