@@ -39,7 +39,7 @@ class TileFinder:
 			for y in range(startY, endY, stepY):
 				for x in range(startX, endX, stepX):
 					if block:
-						block(tile)
+						block(Tile(layer, x, y, z))
 					else:
 						tiles.append(Tile(layer, x, y, z))
 
