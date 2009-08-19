@@ -23,5 +23,4 @@ class Seeder:
 		self.service.renderTile(tile, force=force)
 
 	def __processTile(self, tile, force=False):
-		pdb.set_trace()
 		self.service.renderTile(tile, force=force)
