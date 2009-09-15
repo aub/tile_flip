@@ -10,8 +10,8 @@ class Killer:
 		self.tileCacheConfigFile = tileCacheConfigFile
 		self.service = TileCache.Service.load(self.tileCacheConfigFile)
 
-	def killForPoint(self, layerName, point, delta=0.0, levels=None, tilePadding=0):
-		bbox = (point[0] - delta, point[1] - delta, point[0] + delta, point[1] + delta)
+	def killForPoint(self, layerName, point, delta=(0.0, 0.0), levels=None, tilePadding=0):
+		bbox = (point[0] - delta[0], point[1] - delta[1], point[0] + delta[0], point[1] + delta[1])
 		finder = TileFinder(self.tileCacheConfigFile)
 		func = lambda tile: self.service.cache.delete(tile)
 		finder.findTiles(layerName, levels, bbox, tilePadding, func)
