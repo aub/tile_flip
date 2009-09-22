@@ -3,7 +3,7 @@ import unittest
 import mox
 import pdb
 import TileCache
-from tile_flip.seeder import Seeder
+from TileFlip.Seeder import Seeder
 from test_helper import *
 
 class SeederTests(unittest.TestCase):

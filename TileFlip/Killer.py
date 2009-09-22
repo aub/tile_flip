@@ -1,9 +1,8 @@
 import heapq
 import os
 import TileCache
-import pdb
 from TileCache.Layer import Tile
-from tile_flip.tile_finder import TileFinder
+from TileFlip.TileFinder import TileFinder
 
 class Killer:
 	def __init__(self, tileCacheConfigFile):

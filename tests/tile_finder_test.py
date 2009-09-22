@@ -3,7 +3,7 @@ import unittest
 import mox
 import pdb
 import TileCache
-from tile_flip.tile_finder import TileFinder
+from TileFlip.TileFinder import TileFinder
 from test_helper import *
 
 class TileFinderTests(unittest.TestCase):

@@ -1,7 +1,6 @@
 import TileCache
 from TileCache.Layer import Tile
-from tile_flip.tile_finder import TileFinder
-import pdb
+from TileFlip.TileFinder import TileFinder
 
 class Seeder:
 	def __init__(self, tileCacheConfigFile, userId=-1, groupId=-1):

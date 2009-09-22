@@ -3,7 +3,7 @@ import unittest
 import mox
 import pdb
 import TileCache
-from tile_flip.killer import Killer
+from TileFlip.Killer import Killer
 from test_helper import *
 
 class KillerTests(unittest.TestCase):

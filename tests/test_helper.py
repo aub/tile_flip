@@ -2,7 +2,7 @@ import os
 import pdb
 import shutil
 import TileCache
-from tile_flip.seeder import Seeder
+from TileFlip.Seeder import Seeder
 from TileCache.Layer import Tile
 from TileCache.Service import Service
 

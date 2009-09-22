@@ -2,7 +2,6 @@ import math
 import TileCache
 import TileCache.Layer
 from TileCache.Layer import Tile
-import pdb
 
 class TileFinder:
 	def __init__(self, tileCacheConfigFile):
