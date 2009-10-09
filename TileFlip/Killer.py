@@ -8,16 +8,15 @@ class Killer:
 	def __init__(self, tileCacheConfigFile):
 		self.tileCacheConfigFile = tileCacheConfigFile
 		self.service = TileCache.Service.load(self.tileCacheConfigFile)
+		self.tileFinder = TileFinder(self.tileCacheConfigFile)
 
 	def killForPoint(self, layerName, point, delta=(0.0, 0.0), levels=None, tilePadding=0):
 		bbox = (point[0] - delta[0], point[1] - delta[1], point[0] + delta[0], point[1] + delta[1])
-		finder = TileFinder(self.tileCacheConfigFile)
 		func = lambda tile: self.service.cache.delete(tile)
-		finder.findTiles(layerName, levels, bbox, tilePadding, func)
+		self.tileFinder.findTiles(layerName, levels, bbox, tilePadding, func)
 
 	def killForTmsPath(self, layerName, x, y, z):
-		layer = self.service.layers[layerName]
-		tile = Tile(layer, x, y, z)
+		tile = self.tileFinder.tileForTmsPath(layerName, x, y, z)
 		self.service.cache.delete(tile)
 
 	def killToSize(self, maxMBs):

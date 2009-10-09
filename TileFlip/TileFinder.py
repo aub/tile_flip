@@ -49,7 +49,22 @@ class TileFinder:
 
 	# Note that this only works with disk cacnes.
 	def isTmsPathCached(self, layerName, x, y, z):
-		layer = self.service.layers[layerName]
-		tile = Tile(layer, x, y, z)
+		tile = self.tileForTmsPath(layerName, x, y, z)
 		return self.service.cache.access(self.service.cache.getKey(tile))
+
+	def tileForTmsPath(self, layerName, x, y, z):
+		tile = None
+		layer = self.service.layers[layerName]
+		if layer.tms_type == 'google':
+			res = layer.resolutions[z]
+			maxY = int(
+				round(
+					(layer.bbox[3] - layer.bbox[1]) / 
+					(res * layer.size[1])
+				)
+			) - 1
+			tile  = Tile(layer, x, maxY - y, z)
+		else: 
+			tile  = Tile(layer, x, y, z)
+		return tile
 
