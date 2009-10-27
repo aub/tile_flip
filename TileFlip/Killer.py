@@ -1,5 +1,6 @@
 import heapq
 import os
+import sys
 import TileCache
 from TileCache.Layer import Tile
 from TileFlip.TileFinder import TileFinder
@@ -29,7 +30,7 @@ class Killer:
 			try:
 				os.unlink(path)
 			except OSError, e:
-				print >>sys.stderr, "Error removing tile %s: %s" % (path, e)
+				print >> sys.stderr, "Error removing tile %s: %s" % (path, e)
 
 	def killAll(self):
 		if os.path.isdir(self.__cachePath()):
