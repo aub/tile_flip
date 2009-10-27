@@ -47,14 +47,19 @@ class Killer:
 		cacheSize = 0
 		for root, dirs, files in os.walk(self.__cachePath()):
 			for file in files:
-				path = os.path.join(root, file)
-				stat = os.stat(path)
-				size = stat.st_size
-				if hasattr(stat, 'st_blocks'):
-					size = stat.st_blocks * stat.st_blksize
+				try:
+					path = os.path.join(root, file)
+					stat = os.stat(path)
+					size = stat.st_size
+					# We're going to use the actual on-disk size for now, until that proves to be
+					# a problem.
+					if False: #hasattr(stat, 'st_blocks'):
+						size = stat.st_blocks * stat.st_blksize
 					# strip off rootdir to keep RAM use down
 					path = path[len(self.__cachePath()):]
 					heapq.heappush(heap, (stat.st_atime, size, path))
 					cacheSize += size
+				except OSError:
+					pass
 		return heap, cacheSize
 
